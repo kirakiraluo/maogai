@@ -1,0 +1,30 @@
+@import "homepage-template";
+
+#homepage-head{
+  height: 55vh;
+  background-position: bottom;
+}
+
+#post-wrap{
+  @extend .chunk-default;
+  padding: 20px 40px;
+  box-sizing: border-box;
+
+}
+
+
+.intro-img {
+  width: 100%;
+  height: 400px;
+  margin: 0 auto;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.content{
+  @import "blog-text";
+}

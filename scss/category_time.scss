@@ -1,0 +1,292 @@
+@import "homepage-template";
+
+#homepage-head{
+  height: 55vh;
+  background-position: bottom;
+}
+
+#main-wrap{
+  width: 100%;
+}
+
+#post-wrap{
+  @extend .chunk-default;
+  padding: 50px 50px;
+  box-sizing: border-box;
+  *{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.archive-index{
+  display: flex;
+  justify-items: center;
+  padding-bottom: 20px;
+
+  li {
+    text-align: center;
+    flex-shrink: 1;
+    flex-grow: 1;
+    transition: .3s;
+
+    &:hover{
+      color: #00a7e0;
+    }
+  }
+
+  .active{
+    color: #00a7e0;
+  }
+}
+
+.archive-wrap{
+  padding-left: 30px;
+}
+
+.archive-title{
+  @extend .small-ball;
+  border-left: $side-color solid 4px;
+  padding-left: 20px;
+
+  &:before{
+    background: #f6f7f9;
+    left: -0.45em;
+  }
+  margin: 0;
+}
+@keyframes delay-show {
+   0%{
+     border-color: transparent;
+   }
+    90%{
+      border-color: transparent;
+    }
+   100%{
+     border-color: $side-color;
+   }
+ }
+
+.archive-chunk {
+  @extend .small-ball;
+  border-left: $side-color solid 4px;
+  padding-left: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 30px;
+
+  a:hover{
+    .post-info{
+      padding-top: 0;
+    }
+    .post-title{
+      font-size: 1.2em;
+      color: $side-color;
+    }
+    .post-et {
+      opacity: 1;
+    }
+  }
+
+  &:before {
+    left: -0.6em;
+    top: 49%;
+    transform: translateY(-45%);
+    width: .5em;
+    height: .5em;
+
+    background: #f6f7f9;
+  }
+}
+
+.post-cover{
+  @extend .in-block;
+  position: relative;
+
+  height: 90px;
+  width: 90px;
+  border-radius: 45px;
+
+  overflow: hidden;
+
+  img {
+    border: 1px solid #b6b5b5;
+    box-sizing: border-box;
+    border-radius: 50%;
+    padding: 2px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.post-bg-info{
+  position: absolute;
+  top: 33px;
+  left: -90px;
+  width: 55px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: white;
+  background: #49b1f5;
+  transition: .3s;
+  opacity: 0;
+
+  div {
+    height: 1.5em;
+    line-height: 1.5em;
+  }
+
+  i{
+    margin-right: 5px;
+  }
+
+  &:before {
+    content: '';
+    right: -10px;
+    position: absolute;
+    top: 20px;
+    border-right: 5px solid transparent;
+    border-top: 5px solid transparent;
+    border-left: 5px solid #49b1f5;
+    border-bottom: 5px solid transparent;
+
+  }
+}
+
+.post-info{
+  @extend .in-block;
+  vertical-align: top;
+  padding: 12px 10px;
+  transition: .3s;
+}
+
+.post-title{
+  transition: .3s;
+  color: #4c4948;
+  font-size: 1.5em;
+}
+
+.post-time{
+  transition: .3s;
+  color: #858585;
+}
+
+.post-et{
+  position: absolute;
+  transition: .3s;
+  opacity: 0;
+  color: #858585;
+
+  span{
+    margin-right: 5px;
+  }
+
+  i{
+    margin-right: 3px;
+  }
+}
+
+.post-bg-cover{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: $side-color;
+
+  width: 90px;
+  height: 90px;
+
+  opacity: 0;
+  transition: .3s;
+
+  i {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    font-size: 26px;
+
+    width: fit-content;
+    line-height: 90px;
+
+    color: white;
+  }
+}
+
+.archive-chunk>a:hover{
+  .post-bg-cover{
+    opacity: 1;
+  }
+
+  .post-bg-info{
+    opacity: 1;
+    animation: post-bg-fadein .3s;
+  }
+}
+
+@keyframes post-bg-fadein {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+#paginator {
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 80px;
+}
+
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  color: white;
+
+  .page-number {
+    width: 28px;
+    background-color: $main-color;
+    text-align: center;
+    margin: 5px;
+  }
+
+  .page-prev, .page-next{
+    @extend .page-number
+  }
+}
+
+
+@media (max-width: 750px) {
+  #post-wrap{
+    margin: auto;
+    padding: 30px 0;
+  }
+
+  .post-info{
+    padding-top: 0;
+  }
+
+  .post-title{
+    font-size: 1.2em;
+    line-height: 1.2;
+  }
+
+  .post-et {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .post-cover{
+    top: 5px;
+    height: 70px;
+    width: 70px;
+  }
+
+  .post-bg-cover, .post-bg-info{
+    display: none;
+  }
+}
