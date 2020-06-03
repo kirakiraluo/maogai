@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/category_time.css">
-
+    <script src="cj_css_js_other\DPlayer.min.js"></script>
+    <link rel="stylesheet" href="cj_css_js_other\cj_ctime.css">
 
 </head>
 <body>
@@ -69,101 +70,24 @@
 
     </nav>
     <div id="post-wrap">
-        <ul class="archive-index">
-           <li class="active"><a href="">2020</a></li>
-            <li><a href="">2021</a></li>
-            <li><a href="">2022</a></li>
-        </ul>
-        <div class="archive-wrap">
-            <h1 class="archive-title">
-                2020年
-            </h1>
+        <div class="bilibili_video">
+            <iframe id="bilibili_video_player" width="100%" height="100%" src="https://player.bilibili.com/player.html?aid=285873143&bvid=BV1zf4y127hj&cid=196418269&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
         </div>
-        <div class="archive-chunk"><a href="">
-            <div class="post-cover">
-                <img src="img/homepagebg.jpg" alt="">
-                <div class="post-bg-cover"><i class="far fa-file-alt"></i></div>
-                <i class="iconfont icon-text"></i>
-            </div>
-
-            <div class="post-bg-info">
-                <div><i class="fa fa-eye post-meta__icon" aria-hidden="true"></i>1</div>
-                <div><i class="post-meta__icon far fa-comments" aria-hidden="true"></i>2k</div>
-            </div>
-
-            <div class="post-info">
-                <div class="post-time">2020-04-23</div>
-                <div class="post-title">你好</div>
-                <div class="post-et">
-                    <span>被归档为：</span>
-                    <span>javascript</span>
-                </div>
-            </div>
-        </a>
+        <div style="width: 100%;">
+            <a onclick="change_video()">点我切换为刀剑pv，其实这是一张图片</a>
+            <br/>
+            <a onclick="change_video_an()">其实这是一张图片，时间仓促没做完</a>
         </div>
-        <div class="archive-chunk"><a href="">
-            <div class="post-cover">
-                <img src="img/homepagebg.jpg" alt="">
-                <div class="post-bg-cover"><i class="far fa-file-alt"></i></div>
-                <i class="iconfont icon-text"></i>
-            </div>
-
-            <div class="post-bg-info">
-                <div><i class="fa fa-eye post-meta__icon" aria-hidden="true"></i>1</div>
-                <div><i class="post-meta__icon far fa-comments" aria-hidden="true"></i>2k</div>
-            </div>
-
-            <div class="post-info">
-                <div class="post-time">2020-04-23</div>
-                <div class="post-title">你好</div>
-                <div class="post-et">
-                    <span>被归档为：</span>
-                    <span>javascript</span>
-                </div>
-            </div>
-        </a>
-        </div>
-        <div class="archive-chunk"><a href="">
-            <div class="post-cover">
-                <img src="img/homepagebg.jpg" alt="">
-                <div class="post-bg-cover"><i class="far fa-file-alt"></i></div>
-                <i class="iconfont icon-text"></i>
-            </div>
-
-            <div class="post-bg-info">
-                <div><i class="fa fa-eye post-meta__icon" aria-hidden="true"></i>1</div>
-                <div><i class="post-meta__icon far fa-comments" aria-hidden="true"></i>2k</div>
-            </div>
-
-            <div class="post-info">
-                <div class="post-time">2020-04-23</div>
-                <div class="post-title">你好</div>
-                <div class="post-et">
-                    <span>被归档为：</span>
-                    <span>javascript</span>
-                </div>
-            </div>
-        </a>
-        </div>
-
-        <div id="paginator">
-            <ul class="pagination">
-                <li class="page-prev">
-                    <a href=""><i class="fa fa-fw fa-chevron-left" aria-hidden="true"></i></a>
-                </li>
-                <li class="page-number active"><a href="#">1</a></li>
-                <li class="page-number"><a href="#">2</a></li>
-                <li class="page-number"><a href="#">3</a></li>
-                <li class="page-number"><a href="#">4</a></li>
-                <li class="page-number"><a href="#">5</a></li>
-                <li class="page-number"><a href="#">6</a></li>
-                <li class="page-next">
-                    <a href=""><i class="fa fa-fw fa-chevron-right" aria-hidden="true"></i></a>
-                </li>
-            </ul>
-
-        </div>
-
+        <script>
+            function change_video(){
+                var video=document.getElementById("bilibili_video_player");
+                video.src="https://player.bilibili.com/player.html?aid=98508831&bvid=BV1WE411c7cK&cid=168165721&page=1";
+            }
+            function change_video_an(){
+                var video=document.getElementById("bilibili_video_player");
+                video.src="https://player.bilibili.com/player.html?aid=285873143&bvid=BV1zf4y127hj&cid=196418269&page=1";
+            }
+        </script>
     </div>
     <div class="side-container">
         <div id="side-wrap">
@@ -220,9 +144,6 @@
             </div>
 
             <div class="side-chunk">
-            </div>
-            <div class="side-chunk">
-                <p>dsadsadaajsd</p>
             </div>
         </div>
     </div>

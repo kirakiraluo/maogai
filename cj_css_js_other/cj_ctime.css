@@ -1,0 +1,19 @@
+.bilibili_video{
+    width: 100%;
+    height: 80%;
+}
+@media screen and (max-width:480px){
+    .bilibili_video{
+        width: 100%;
+        height: 20rem;
+        position: fixed;
+        top:0;
+        
+    }
+}
+@media screen and (min-width:481px) and (max-width:1300px){
+    .bilibili_video{
+        width: 100%;
+        height: 30rem;
+    }
+}
