@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+
+    <title>Title</title>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="css/cat.css">
+</head>
+<body>
+<!--<canvas class="fireworks" width="1707" height="818" ></canvas>-->
+    <div class="sideindex-wrap">
+        <div id="sideindex-toc">
+            <div id="sideindex-ct">
+                <h2>目录</h2>
+                <div id="sideindex-progress">
+                    <p>你已经阅读了 <span id="sideindex-num">0</span> %</p>
+                    <div id="sideindex-pgbar"></div>
+                </div>
+            </div>
+            <div id="sideindex-pos"></div>
+        </div>
+
+    </div>
+    <canvas style="" id="bg-canvas"></canvas>
+
+    <main id="main">
+        <div id="main-wrap">
+            <nav class="top-nav">
+                <div id="top-logo">
+                    <a href=""><h1>Zeka's Blog</h1></a>
+                </div>
+                <div id="bt-sidenav" class="side-top-toggle dis-pe">
+                    <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+                </div>
+                <ul class="top-item-wrap dis-pc">
+                    <li><a href=""><i class="fa fa-search fa-fw"></i>搜索</a></li>
+                    <li><a href=""><i class="fa-fw fa fa-home"></i>首页</a></li>
+                    <li><a href=""><i class="fa-fw fa fa-list" aria-hidden="true"></i>归档<i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a>
+                        <ul class="top-toggle-wrap">
+                            <li><a href=""><i class="fa fa-history" aria-hidden="true"></i>时间</a></li>
+                            <li><a href=""><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i>分类</a></li>
+                        </ul>
+                    </li>
+                    <li><a href=""><i class="fa-fw fa fa-link"></i>友链</a></li>
+                    <li><a href=""><i class="fa-fw fa fa-heart" aria-hidden="true"></i>关于</a></li>
+                </ul>
+            </nav>
+
+            <nav class="side-nav dis-pe">
+                <div class="sidenav-head-wrap">
+                    <img src="img/avatar.png" alt="">
+                </div>
+                <div class="sidenav-post-wrap">
+                    <div class="blog-side-info">
+                        <a href="">
+                            <div>文章</div>
+                            <div>30</div>
+                        </a>
+                    </div>
+                    <div class="blog-side-info">
+                        <a href="">
+                            <div>分类</div>
+                            <div>30</div>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <ul class="sidenav-list">
+                    <li><a href=""><i class="fa-fw fa fa-home"></i>首页</a></li>
+                    <li><a href=""><i class="fa fa-history" aria-hidden="true"></i>时间</a></li>
+                    <li><a href=""><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i>分类</a></li>
+                    <li><a href=""><i class="fa-fw fa fa-link"></i>友链</a></li>
+                    <li><a href=""><i class="fa-fw fa fa-heart" aria-hidden="true"></i>关于</a></li>
+                </ul>
+
+            </nav>
+            <header id="head-wrap" style="background-image: url(img/homepagebg2.jpg)">
+                <div id="post-wrap">
+                    <h1>第一篇博客</h1>
+                    <span><i class="fa fa-calendar" aria-hidden="true"></i>发表于 2020-04-07 | <i class="fa fa-history" aria-hidden="true"></i>更新于 2020-04-07</span>
+                    <br>
+                    <span><i class="fas fa-eye"></i>浏览数：1 | <i class="fas fa-comments"></i>评论数： 2 | <i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i>被归档为 <a href="">Javacript</a> </span>
+                </div>
+            </header>
+            <div id="content-wrap">
+                <div id="content">
+
+                    <h1>表单</h1>
+                    <p>表单包含了很多主要的前后端交互(用户操作数据向后端发送处理).</p>
+                    <p>需要做到的事情有:</p>
+                    <ol start='' >
+                        <li>实现表单的视图(一些基本种类,一些可以使用的装饰,一些可选选项)</li>
+                        <li>使用js等方法处理操作(验证,向后台提交(post or get))</li>
+
+                    </ol>
+                    <h2>视图层的表单</h2>
+                    <pre><code>&lt;form action=&quot;func&quot; method=&quot;POST or GET&quot;&gt;
+	&lt;div&gt;
+		&lt;label for=&quot;test1&quot;&gt;&lt;/label&gt;
+		&lt;input type=&quot;text&quot; id=&quot;test1&quot; name=&quot;input1&quot;&gt;
+	&lt;/div&gt;
+	&lt;div&gt;
+		&lt;label for=&quot;test2&quot;&gt;&lt;/label&gt;
+		&lt;input type=&quot;text&quot; id=&quot;test2&quot; name=&quot;input2&quot;&gt;
+	&lt;/div&gt;
+&lt;/form&gt;
+</code></pre>
+                    <p>在浏览器中定义一个表单域, 可以指定action(用户点击提交后触发的事件),method(get or post).</p>
+                    <p>可以将label与对应的input放在一个div内,方便组织与相关样式调整.</p>
+                    <h3>label标签</h3>
+                    <p>上面首先定义了一个label标签,标签内有一个for属性.</p>
+                    <p>for属性可以让label与相关的input产生关联.</p>
+                    <p>点击一个label中的文字(或者区域),连接的input框被选中(产生其他操作)</p>
+                    <p>label可以不定义在表单内,而且for的对象只要是id就行,甚至可以绑定div等等,但是没有效果.</p>
+                    <p>使用方式有两种:</p>
+                    <pre><code>// method1
+&lt;label&gt;string&lt;input type=&quot;...&quot; ...&gt;string&lt;/label&gt;
+
+//method2
+&lt;label for=&quot;test1&quot;&gt;string&lt;/label&gt;
+&lt;input type=&quot;...&quot; id=&quot;test1&quot;&gt;
+</code></pre>
+                    <p>第一种是隐式说明,不需要for,input也不需要id.</p>
+                    <p>第二种则是显式,更加灵活.</p>
+                    <p>推荐使用显示.</p>
+                    <p>一个input是可以绑定多个label的.但是这样会很奇怪,正确的方式是使用隐式写入,然后在input前后加上说明.(然后加上for与id).</p>
+
+                    <h3>input标签</h3>
+                    <p>input可以说是表单中最重要的标签了.</p>
+                    <p>我们可以使用type用来表示不同的内容.</p>
+                    <p>常见的有:</p>
+                    <ol start='' >
+                        <li>text: 通常是一行文字输入框,可以使用value=&quot;string&quot;属性预先填充值.</li>
+
+                    </ol>
+                    <blockquote><p>与之相对的是textarea, 这是个标签;<code>&lt;textarea&gt;string&lt;/textarea&gt;</code>,string填入预先默认填充的值.</p>
+                        <p>textarea方便大规模的填充文本.</p>
+                    </blockquote>
+                    <ol start='2' >
+                        <li>date: 时间,提供一个时间的选择.</li>
+                        <li>color: 提供一个调色盘来进行颜色选择.</li>
+                        <li>checkbox: 多选框(方形).</li>
+                        <li>radio:单选框(圆形).</li>
+                        <li>password:密码输入框.</li>
+                        <li>submit:实则为一个按钮(button),在form里面点击按钮就能触发form事件.类似text,使用value可以修改显示在按钮上的文字.</li>
+
+                    </ol>
+                    <blockquote><p>目前有一个专门的button组件,使用<code>&lt;button&gt;string&lt;/button&gt;</code>可以方便的调节文字,样式.</p>
+                        <p>button 也能设定type,一般有三种:</p>
+                        <ol start='' >
+                            <li>submit(默认):提交,触发事件.</li>
+                            <li>reset: 将表单重置为默认值.</li>
+                            <li>button: 啥也不做,一般用来js绑定其他事件.</li>
+
+                        </ol>
+                        <p>此外,button支持完整html元素(可以插入图片等等),而使用input创建的提交只能显示文字.</p>
+                    </blockquote>
+                    <h3>一些常用的widgets(小组件)</h3>
+                    <p>以前使用python原版tkinter的时候基本不会灵活使用widgets,只会简单的输入,单选复选.后来才知道其实很多gui都内置了很多很好用(默认样式丑)的小组件(比如选择文件,下拉栏目等等).</p>
+                    <p><strong>组件的通用属性:</strong></p>
+                    <p>组件有一些通用属性,便于表单提交的规范:</p>
+                    <ol start='' >
+                        <li><p>disabled: 禁用组件,这个元素的值也不会随着其他数据一起发送</p>
+                        </li>
+                        <li><p>readonly: 禁止用户修改,但是数据会一同发送.</p>
+                            <blockquote><p>上面都是一个属性,可以通过js添加删除.</p>
+                            </blockquote>
+                        </li>
+                        <li><p>placeholder: 灰色背景提示</p>
+                        </li>
+                        <li><p>form:相关联的表单元素</p>
+                        </li>
+                        <li><p>name: 提交到表单内的变量名称</p>
+                        </li>
+                        <li><p>value: 元素的初始值</p>
+                        </li>
+
+                    </ol>
+                    <p><strong>哪些可以被称作widgets</strong></p>
+                    <p>input: 文本输入框</p>
+
+                    <p>select:下拉框</p>
+                    <pre><code>&lt;select id=&quot;&quot; name=&quot;simple&quot;&gt;
+	&lt;option&gt;name&lt;/option&gt;
+	&lt;option selected&gt;name2&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+                    <p>添加选项,这样就能为select填入值(默认为option内部的值,也可添加value来传递值).</p>
+
+                    <p>checkbox:复选框</p>
+                    <pre><code>&lt;input value=&quot;dsas&quot; name=&quot;test&quot; type=&quot;checkbox&quot;&gt;
+&lt;input value=&quot;dsads&quot; name=&quot;test&quot; type=&quot;checkbox&quot;&gt;
+&lt;input value=&quot;dsads&quot; name=&quot;test1&quot; type=&quot;checkbox&quot;&gt;
+</code></pre>
+                    <p>共用同一个name的input会被绑定在同一个值上.</p>
+
+                    <p>radio:单选框</p>
+                    <pre><code>&lt;ul&gt;
+    &lt;li&gt;
+      &lt;label for=&quot;soup&quot;&gt;Soup&lt;/label&gt;
+      &lt;input type=&quot;radio&quot; checked id=&quot;soup&quot; name=&quot;meal&quot; value=&quot;soup&quot;&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;label for=&quot;curry&quot;&gt;Curry&lt;/label&gt;
+      &lt;input type=&quot;radio&quot; id=&quot;curry&quot; name=&quot;meal&quot; value=&quot;curry&quot;&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;label for=&quot;pizza&quot;&gt;Pizza&lt;/label&gt;
+      &lt;input type=&quot;radio&quot; id=&quot;pizza&quot; name=&quot;meal&quot; value=&quot;pizza&quot;&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+</code></pre>
+                    <p>一个很好的办法是放置在一个ul表单里,在li中著名标签与单选框.</p>
+                    <p>只要共用同一个name,那么它们绑定的就是一个值.选择其中一个会取消对其他的选择.</p>
+                    <p>单复选都可以用checked来初始默认选择值.</p>
+
+                    <p>滑块:</p>
+                    <pre><code>&lt;input type=&quot;range&quot; name=&quot;beans&quot; id=&quot;beans&quot; min=&quot;0&quot; max=&quot;500&quot; step=&quot;10&quot;&gt;
+</code></pre>
+                    <p>定义一个可以滑动的滑块,定义了name,最值,步长.</p>
+
+                    <p>日期时间选择</p>
+
+                    <p>色彩选择(很丑,但是实用)</p>
+
+                    <p>文件选择:</p>
+                    <pre><code>&lt;input type=&quot;file&quot; name=&quot;file&quot; id=&quot;file&quot; accept=&quot;image/*&quot; multiple&gt;
+</code></pre>
+                    <p>选择文件上传,accept接受一个MIME类型.</p>
+                    <p>会显示你提交的文件名称.这一般很丑.</p>
+                    <p>如果是提交图片的话,我们需要上传后得到预览,但是原来的选择器太丑了.</p>
+                    <p>这一般是需要js配合使用,具体大致为文件上传得到url,然后作为img的src来显示,原本文件的选择则隐藏.</p>
+                    <pre><code>.inputfile {
+            opacity: 0;
+            position: absolute;
+        }
+
+&lt;input type=&quot;file&quot; name=&quot;file&quot; id=&quot;file&quot; class=&quot;inputfile&quot; /&gt;
+&lt;label for=&quot;file&quot; class=&#39;btn btn-success&#39;&gt;Choose a file&lt;/label&gt;
+</code></pre>
+                    <p>让实际的文件选择器脱离文档流并不可见.让选择的内容落到label上(可以调节为一个我们满意的btn).</p>
+                    <p>这样用户点击的上传按钮实际上是label,原本的input是不可见的.</p>
+
+                    <p>隐藏内容:</p>
+                    <pre><code>&lt;input type=&quot;hidden&quot; id=&quot;timestamp&quot; name=&quot;timestamp&quot; value=&quot;1286705410&quot;&gt;
+</code></pre>
+                    <p>与disabled, readonly不同,元素是不可见的,但是这个值能被提交.需要设定默认值.</p>
+                    <h3>form表单</h3>
+                    <p>使用<code>&lt;form action=&quot;&quot; method=&quot;GET&quot; &gt;&lt;/form&gt;</code>就能创建表单域.</p>
+                    <p>上面的action表示触发对应的js事件,method指定方法.</p>
+                    <blockquote><p>为了得到对应表单元素的引用,需要为每个input指定一个name属性.</p>
+                        <pre><code>&lt;input name=&quot;user_name&quot; type=&quot;text&quot;&gt;
+</code></pre>
+                        <p>这样提交的时候就能通过name(上面为user_name)属性得到输入的内容.</p>
+                    </blockquote>
+                    <p>一张表单可能很长(比如有很多问题的调查问卷),它们共用一个submit.</p>
+                    <p>一般来说,可以根据题目类型分类,这样可以更加语义化.</p>
+                    <p>可以使用下面标签做到:</p>
+                    <pre><code>&lt;form&gt;
+	&lt;fieldset&gt;
+		&lt;legend&gt;info&lt;/legend&gt;
+		&lt;label&gt;string&lt;input ...&gt;&lt;/label&gt;
+		&lt;label&gt;string&lt;input ...&gt;&lt;/label&gt;
+		&lt;label&gt;string&lt;input ...&gt;&lt;/label&gt;
+		&lt;label&gt;string&lt;input ...&gt;&lt;/label&gt;
+	&lt;fieldset&gt;
+	&lt;fieldset&gt;
+		&lt;legend&gt;info&lt;/legend&gt;
+		&lt;label&gt;string&lt;input ...&gt;&lt;/label&gt;
+		&lt;label&gt;string&lt;input ...&gt;&lt;/label&gt;
+		&lt;label&gt;string&lt;input ...&gt;&lt;/label&gt;
+		&lt;label&gt;string&lt;input ...&gt;&lt;/label&gt;
+	&lt;fieldset&gt;
+&lt;/form&gt;
+</code></pre>
+                    <p>每一个fieldset块会将内部元素加上默认黑色边框,并且可以使用legend标签加上标题.</p>
+                    <blockquote><p>实际上也可以使用div,然后自己调节css来修饰表单(加上边框等等).</p>
+                        <p>fieldset的好处是给我们一个很好的内联标题legend.(当然对于某强迫症还是喜欢自己改).</p>
+                    </blockquote>
+                    <p>这样的好处是方便语义化.</p>
+                    <p>还有一种语义化的方法就是在标签上指定title=&quot;string&quot;,这样在鼠标悬浮的时候会弹出默认提示信息.</p>
+
+                    <h3>自定义组件样式</h3>
+                    <p>原本的组件基本都很丑,需要使用css等手段美化.</p>
+                    <p>一些方便美化的:</p>
+                    <p>button: 可以使用大量css,还可以使用js来修饰.</p>
+                    <p>一些不方便美化的:</p>
+                    <p>颜色选择,文件选择,多选复选.</p>
+                    <blockquote><p>但是总有可以取巧的方法.</p>
+                        <p>比如下拉选择完全可以自己写一个ul的下拉栏,然后选择对应的值.</p>
+                        <p>对于一些其他的,往往可以使用label连接对应的组件,然后隐藏原来丑陋的组件,从而修改label(往往自由度很高,但是需要花费大量时间来学习调试效果).</p>
+                    </blockquote>
+
+                    <h2>数据发送</h2>
+                    <p>使用form的action发送数据:</p>
+                    <p>action可以指定为绝对url,从而向绝对url发送对应方法的数据.</p>
+                    <p>也可是相对url.</p>
+                    <p>还可是函数,让js来发送.</p>
+                    <blockquote><p>这样的好处是可以通过js来返回验证情况,并对参数做进一步处理(比如加密,判断等等).</p>
+                    </blockquote>
+
+                    <h3>get与post</h3>
+                    <p>其实两者差别不是很大.</p>
+                    <p>get方法主要是将数据作为参数<code>url/?paraName=value&amp;para2Name=value2</code>来发送.</p>
+                    <p>post用来发送内容比较多的数据.数据附到FormData里.</p>
+
+                    <h3>数据验证</h3>
+                    <p>验证可以直接在html中完成,也可在js中完成.</p>
+                    <p><strong>在html中:</strong></p>
+                    <p>使用属性<code>pattern=&quot;re&quot;</code>引入一个正则表达式来判断.</p>
+                    <p>还可以限制长度等等</p>
+                    <p>但是缺点很明显:</p>
+                    <p>提示框是基于浏览器的,无法修改它们的样式.</p>
+                    <p>所以js处理才是真正有效的方法.</p>
+
+                    <p><strong>在js中:</strong></p>
+                    <p>有很多api可以直接调用来处理一些常见的验证.</p>
+                    <p>为使用js验证,首先需要关闭表单的验证:</p>
+                    <pre><code>&lt;form novalidate&gt;
+&lt;/form&gt;
+</code></pre>
+                    <p>然后使用js来为表单添加事件倾听.</p>
+                    <pre><code>// 有许多方式可以获取 DOM 节点；在此我们获取表单本身和
+// email 输入框，以及我们将放置错误信息的 span 元素。
+
+var form  = document.getElementsByTagName(&#39;form&#39;)[0];
+var email = document.getElementById(&#39;mail&#39;);
+var error = document.querySelector(&#39;.error&#39;);
+
+email.addEventListener(&quot;input&quot;, function (event) {
+  // 当用户输入信息时，校验 email 字段
+  if (email.validity.valid) {
+    // 如果校验通过，清除已显示的错误消息
+    error.innerHTML = &quot;&quot;; // 重置消息的内容
+    error.className = &quot;error&quot;; // 重置消息的显示状态
+  }
+}, false);
+form.addEventListener(&quot;submit&quot;, function (event) {
+  // 当用户提交表单时，校验 email 字段
+  if (!email.validity.valid) {
+
+    // 如果校验失败，显示一个自定义错误
+    error.innerHTML = &quot;I expect an e-mail, darling!&quot;;
+    error.className = &quot;error active&quot;;
+    // 还需要阻止表单提交事件，以取消数据传送
+    event.preventDefault();
+  }
+}, false);
+</code></pre>
+                    <p>这样提交按钮其实权力也被移交给了js.</p>
+                    <p>我们可以自定义提示错误框(使用js在特定位置改变样式,生成等等).</p>
+                    <blockquote><p>常用的办法是添加一个类</p>
+                    </blockquote>
+
+                    <div id="post-info">
+                        <ul>
+                            <li><span>文章作者：</span><a href="">Zeka</a></li>
+                            <li><span>文章链接：</span><a id="location" href="">https://blog.hclonely.com/posts/a7676fbe/#javascript%E6%94%AF%E6%8C%81</a></li>
+                        </ul>
+                    </div>
+                    <div class="other-post">
+                        <a href="">
+                            <div class="prev-post">
+                                <img src="img/homepagebg.jpg" alt="">
+                                <div class="other-post-info">
+                                    <p>上一篇</p>
+                                    <p>hello</p>
+                                </div>
+                            </div>
+                        </a>
+                        <a href="">
+                            <div class="next-post">
+                                <img src="img/homepagebg4.jpg" alt="">
+                                <div class="other-post-info">
+                                    <p>下一篇</p>
+                                    <p>hello</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <hr>
+                    <div class="comment-main">
+                        <h2 id="comment-h2" base_url="/" blog_id="1">评论</h2>
+                        <div class="comment-wrap">
+                            <div class="comment-head">
+                                <label for="nickname" class="dis-pe">昵称</label>
+                                <input id="nickname" type="text" placeholder="昵称(必填)">
+                                <label for="mail" class="dis-pe">邮箱</label>
+                                <input id="mail" type="text" placeholder="邮箱(必填)">
+                                <label for="website" class="dis-pe">网站</label>
+                                <input id="website" type="text" placeholder="网站(https://)">
+                            </div>
+                            <div class="comment-edit">
+                                <textarea name="" id="comment_ct" placeholder="在这里留下你的足迹吧！" rows="10"></textarea>
+                                <div class="cat">
+                                    <svg id="bongo-cat" class="dis-pc" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 787.3 433.8">
+                                        <defs>
+                                            <symbol id="eye" data-name="eye" viewBox="0 0 19.2 18.7">
+                                                <circle cx="9.4" cy="9.1" r="8"></circle>
+                                                <path d="M16.3,5.1a1.3,1.3,0,0,1-1.4-.3,7.2,7.2,0,0,0-4.5-2.6A7.2,7.2,0,0,0,5.5,3.5,6.8,6.8,0,0,0,2.8,7.8a6.8,6.8,0,0,0,1,4.8,6.2,6.2,0,0,0,4,2.7,6.1,6.1,0,0,0,4.6-.7,6.7,6.7,0,0,0,2.9-3.7,6.4,6.4,0,0,0-.5-4.5c-.1-.2.8-1,1.5-1.3s2.2,0,2.3.5a9.4,9.4,0,0,1-.2,7.2,9.4,9.4,0,0,1-5.1,5.1,9,9,0,0,1-7,.2A9.6,9.6,0,0,1,1,13.5,9.2,9.2,0,0,1,.4,6.6,8.9,8.9,0,0,1,4.6,1.3,9,9,0,0,1,11.2.2,9.3,9.3,0,0,1,16.7,4C16.9,4.3,17,4.8,16.3,5.1Z"></path>
+                                            </symbol>
+                                            <symbol id="paw-pads" data-name="paw-pads" viewBox="0 0 31.4 33.9">
+                                                <path d="M6.8,16a3.7,3.7,0,0,1,1.1,2.8,3.2,3.2,0,0,1-1.6,2.6L5,21.8H4.4a2.8,2.8,0,0,1-1.8.3A4.2,4.2,0,0,1,.2,19.1,7.7,7.7,0,0,1,0,17.6a2.8,2.8,0,0,1,.6-2,3.2,3.2,0,0,1,2.1-.8H4A5,5,0,0,1,6.8,16Zm7.3-4.8a1.8,1.8,0,0,0,.7-.5l.7-.4a3.5,3.5,0,0,0,1.1-1,3.2,3.2,0,0,0,.3-1.4,1.4,1.4,0,0,0-.2-.6,3.4,3.4,0,0,0-.3-2.4,3.2,3.2,0,0,0-2.1-1.5H13.1a4.7,4.7,0,0,0-1.6.4,2,2,0,0,0-.9.9l-.4.6v.4a6.1,6.1,0,0,0-.5,1.2,4.3,4.3,0,0,0,0,1.6,3.5,3.5,0,0,0,.5,2l.7.6a3.3,3.3,0,0,0,1.7.7A3,3,0,0,0,14.1,11.2ZM22.7,7l.6.2h.3A2.3,2.3,0,0,0,25,6.8l.4-.3.6-.3a7.5,7.5,0,0,0,1.5-.9,4.2,4.2,0,0,0,.8-1.2,1.9,1.9,0,0,0,.1-1.5A2.6,2.6,0,0,0,27.5,1,3.5,3.5,0,0,0,23.6.3a3.8,3.8,0,0,0-2,1.5,4.8,4.8,0,0,0-.7,2,3.6,3.6,0,0,0,.9,2.6ZM31,24.1a13.5,13.5,0,0,0-2.2-4.7,36.6,36.6,0,0,0-3.2-3.9,5.3,5.3,0,0,0-5-1.9,10.5,10.5,0,0,0-4.5,2.2A5.6,5.6,0,0,0,13.5,20a15.1,15.1,0,0,0,1.2,6.3c.8,2,1.7,4,2.6,5.9a1.6,1.6,0,0,0,1.5.8,1.7,1.7,0,0,0,1.9.9,17.1,17.1,0,0,0,8.7-4.8,8.2,8.2,0,0,0,1.7-2C31.6,26.3,31.3,25,31,24.1Z" fill="#ef97b0"></path>
+                                            </symbol>
+                                        </defs>
+                                        <g id="head">
+                                            <g id="head__outline">
+                                                <path d="M303.2,186.3c4-7,14.8-20.2,20-26,17-19,34.6-34.9,43-41l12-8s16.6-32,21-33c9-2,33,22,33,22s20-9,79,7c41,11.1,47,14,57,22,7.5,6,18,16,18,16s33.7-19.5,41-15-2,66-2,66,5.9,12.9,11,22c9.1,16.2,13.6,20.2,19,31,3.6,7.2,8.4,28.5,10.5,43.5l-385-62Z" fill="#fff"></path>
+                                                <path d="M302.9,186.9c-1.2,3-5.9,12.6-9,18.8l-12.5,25.5-.6-1.2c32.2,4.8,64.4,9.2,96.6,13.6s64.4,8.9,96.5,13.7,64.3,9.7,96.4,14.9,64.1,10.5,96.2,15.8l-5.6,5.5c-1.2-8.5-2.8-17.1-4.8-25.6-1-4.1-2.1-8.4-3.4-12.3l-.5-1.4-.5-1.4-.6-1.3-.7-1.3a59.5,59.5,0,0,0-3.1-5.5c-2.2-3.6-4.7-7.2-7.1-11s-4.8-7.6-7-11.5c-4.5-7.9-8.3-15.9-12.1-24a4,4,0,0,1-.3-2.6h0c1.4-9.1,2.7-18.2,3.7-27.4.5-4.5.9-9.1,1.2-13.7s.4-9.1.2-13.4a26.4,26.4,0,0,0-.8-6,8.1,8.1,0,0,0-.3-1.1c-.1-.3-.2-.4-.1-.3h.3c0,.1.1.1,0,.1h-.6a11.9,11.9,0,0,0-2.5.2,16.3,16.3,0,0,0-3,.7,56.7,56.7,0,0,0-6.2,2.1,212.6,212.6,0,0,0-24.5,11.9h-.1a3.9,3.9,0,0,1-4.7-.6c-4.9-4.7-10-9.4-15.1-13.8a86.6,86.6,0,0,0-7.9-6,46.1,46.1,0,0,0-8.5-4.6c-6-2.6-12.6-4.6-19.2-6.7l-19.8-5.7a324.9,324.9,0,0,0-40-8.9,196.8,196.8,0,0,0-20.2-1.8c-1.7,0-3.4-.1-5.1,0h-2.5l-2.5.2-2.5.2-2.4.4-2.4.5-1.1.3h-.5l-.4.2H433a2.5,2.5,0,0,1-2.6-.7c-4.6-4.6-9.5-9.1-14.5-13.2a82.7,82.7,0,0,0-7.9-5.7L403.9,81a10.8,10.8,0,0,0-4-.9c-.1,0-.3,0-.3.1h0l-.7.5-1.5,1.7c-1,1.2-2,2.6-2.9,3.9s-3.6,5.5-5.3,8.3c-3.5,5.7-6.8,11.4-9.9,17.3h0l-.4.4-10.2,6.6a53.6,53.6,0,0,0-4.9,3.4l-4.6,3.8c-6.2,5.1-12.1,10.6-17.9,16.2s-11.3,11.4-16.7,17.4c-2.7,3-5.3,6.1-7.8,9.2s-5,6.3-7.4,9.5c-4.2,5.6-7,10-5.7,7.1a34.1,34.1,0,0,1,2.1-3.8l3.8-5.6c2.9-4,6.3-8.3,8.5-10.9s4.4-5.2,6.7-7.7l6.9-7.4c4.7-4.9,9.4-9.7,14.3-14.3s9.8-9.3,15-13.7l4-3.2,4.2-2.9,8.3-5.7-.4.4c3-5.9,6.1-11.8,9.4-17.7,1.6-2.9,3.3-5.8,5.1-8.6l2.9-4.3,1.8-2a7.5,7.5,0,0,1,1.3-1.1c.1-.2.6-.4,1-.5l.9-.2h1.7l1.4.2,2.7.8c1.7.7,3.3,1.5,4.8,2.3a84,84,0,0,1,8.5,5.7A175.7,175.7,0,0,1,434,98.5l-2.9-.6.8-.3.7-.2L434,97l2.7-.7,2.7-.5a23,23,0,0,1,2.6-.3l2.7-.3,2.7-.2h5.3a182.1,182.1,0,0,1,21,1.3,332.5,332.5,0,0,1,41.1,8.4l20,5.5c6.7,2,13.4,4,20.1,6.7a65.3,65.3,0,0,1,9.8,5.1c3.1,2.1,5.9,4.3,8.6,6.5,5.4,4.5,10.6,9.2,15.7,14l-4.8-.6c4.1-2.4,8.2-4.6,12.4-6.7s8.6-4.2,13-6c2.3-.9,4.6-1.7,7-2.4a23.4,23.4,0,0,1,3.8-.9,20,20,0,0,1,4.4-.4h1.3l1.5.4a5.1,5.1,0,0,1,1.7.7l.9.7.8.7a8.3,8.3,0,0,1,1.6,2.6,12.7,12.7,0,0,1,.8,2.3,44.6,44.6,0,0,1,1.1,7.7c.2,5,.1,9.7-.1,14.4s-.7,9.5-1.2,14.1c-.9,9.4-2.1,18.6-3.6,27.9l-.3-2.6c3.7,7.9,7.5,15.8,11.8,23.3,2.1,3.7,4.4,7.4,6.8,11s4.9,7.2,7.3,11.1c1.3,2,2.4,4,3.5,6.1a10.9,10.9,0,0,0,.8,1.5l.8,1.8.7,1.7.6,1.7c1.5,4.4,2.6,8.7,3.7,13.1a262,262,0,0,1,5.2,26.4,4.9,4.9,0,0,1-4.1,5.6h-1.5c-32.1-5-64.2-9.9-96.3-15.1s-64.1-10.6-96.1-16.1-64-11.4-96-17.4-63.9-11.9-95.9-17.4h-.1a.8.8,0,0,1-.6-.9v-.2l16.6-32.1C299.8,192.2,304.1,183.9,302.9,186.9Z"></path>
+                                            </g>
+                                            <g id="head__face">
+                                                <g id="eyes">
+                                                    <use width="19.2" height="18.7" transform="translate(474.8 195.2)" xlink:href="#eye"></use>
+                                                    <use width="19.2" height="18.7" transform="matrix(-0.51, -0.85, 0.82, -0.5, 370.39, 192.59)" xlink:href="#eye"></use>
+                                                </g>
+                                                <g id="mouth">
+                                                    <path d="M399.2,186.3c.9,3.6,2.6,7.8,6,9,6.4,2.3,19-6,19-6s4.1,12.4,10,15,10.7-1.7,16-6" fill="#fff"></path>
+                                                    <path d="M450.2,198.3c.6,1.2.2,1.9-.2,2.2a36.7,36.7,0,0,1-7.6,4.9,14.9,14.9,0,0,1-4.8,1.4h-1.4l-1.3-.2-1.4-.4-1.3-.6a21.6,21.6,0,0,1-6.4-7.2,52.8,52.8,0,0,1-4-8.3l3.8,1.3a62.3,62.3,0,0,1-7.1,4.1,32.1,32.1,0,0,1-7.9,2.8,13.2,13.2,0,0,1-4.9.2l-1.4-.3a7.5,7.5,0,0,1-1.3-.6,7.9,7.9,0,0,1-2.3-1.6,16.8,16.8,0,0,1-2.9-4,24.1,24.1,0,0,1-1.6-4.2c-.1-.5,1.6-1.3,3-1.4s3.5.2,3.6.6a10.3,10.3,0,0,0,2.6,4.9l.7.5h2.4l1.5-.2a28.4,28.4,0,0,0,6.5-2c2.1-1,4.3-2.1,6.3-3.3h.1a2.5,2.5,0,0,1,3.4.9l.3.5a43.1,43.1,0,0,0,3.2,7.7,19.8,19.8,0,0,0,2.2,3.4,8.1,8.1,0,0,0,2.6,2.6,5,5,0,0,0,3,.7,10.8,10.8,0,0,0,3.7-1,33.4,33.4,0,0,0,7.2-4.3C448.8,197.4,449.5,197.2,450.2,198.3Z"></path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                        <g id="table">
+                                            <path d="M65.7,181.8l714,124c0,74-2,54-2,128l-673-161Z" fill="#fff"></path>
+                                            <path d="M786.7,304.2c-2.7,1.2-10.8,0-16.1-.9L31.1,176.4c-5.2-.9-8.9-3.8-6.2-5s14.3-1.4,19.5-.5L777.1,300.6C782.3,301.6,789.4,303.1,786.7,304.2Z"></path>
+                                        </g>
+                                        <g id="laptop">
+                                            <g id="laptop__base">
+                                                <polygon points="641.9 304.1 454.7 348.2 103.8 271.3 254.6 230.3 641.9 304.1" fill="#f2f2f2"></polygon>
+                                                <path d="M641.9,304.1c1.5-.1-2.3,1.5-10.3,3.6-28.9,7.5-58.1,15.2-87.7,22.6s-59.1,14.5-88.4,21.3l-.8.2-.8-.2-349.5-78-1.1-.2-8.7-1.9,8.6-2.3,150.6-41.5.6-.2h.7c62.5,11.7,125.5,23.6,188.4,35.9s125.6,25.1,188,37.6c8,1.6,11.9,3,10.4,3a185.6,185.6,0,0,1-18.4-2.6c-61.9-11.2-123.6-22.2-185-33.5s-122.7-23.1-184.4-35h1.2L104.4,273.4h-.1v-4.3l351.2,75.7h-1.5c28.3-6.7,56.3-13.3,84.3-19.5s56.5-12,85.2-18.1C631.3,305.6,640.4,304.1,641.9,304.1Z" fill="#231f20"></path>
+                                            </g>
+                                            <g id="laptop__keyboard">
+                                                <polygon points="371.1 274.8 256.8 253.5 257 252.7 266.2 251.1 382.4 271.5 382.3 272.3 371.1 274.8" fill="#3e3e54"></polygon>
+                                                <polygon points="237.4 265.6 221.3 262.4 221.4 261.7 230.2 260.2 246.8 262.6 246.6 263.4 237.4 265.6" fill="#3e3e54"></polygon>
+                                                <polygon points="474.6 312.9 249.9 268.1 250.1 267.3 259.2 265.8 487.7 309.6 487.5 310.5 474.6 312.9" fill="#3e3e54"></polygon>
+                                                <polygon points="411.8 309.4 204.2 266.7 204.4 266 212.9 264.5 423.9 306.3 423.7 307.2 411.8 309.4" fill="#3e3e54"></polygon>
+                                                <polygon points="450 317.3 428.5 312.9 428.8 312 440.7 310.6 462.7 314.1 462.5 315 450 317.3" fill="#3e3e54"></polygon>
+                                                <polygon points="201.6 273.9 187.5 270.9 187.7 270.2 196 268.7 210.4 271 210.3 271.7 201.6 273.9" fill="#3e3e54"></polygon>
+                                                <polygon points="222.6 278.3 208.1 275.3 208.3 274.5 216.9 273.1 231.8 275.4 231.6 276.2 222.6 278.3" fill="#3e3e54"></polygon>
+                                                <polygon points="362.9 308.1 231.5 280.2 231.7 279.5 240.7 278.1 374.2 305.1 374 305.9 362.9 308.1" fill="#3e3e54"></polygon>
+                                                <polygon points="444.3 288.4 385.2 277.4 385.4 276.5 396.6 274.9 456.9 285.1 456.7 285.9 444.3 288.4" fill="#3e3e54"></polygon>
+                                                <polygon points="526.1 303.6 460.1 291.3 460.3 290.4 472.8 288.9 540.1 300.2 539.9 301.1 526.1 303.6" fill="#3e3e54"></polygon>
+                                                <polygon points="426.2 321.6 376.1 310.9 376.3 310.1 387.4 308.7 438.5 318.5 438.3 319.4 426.2 321.6" fill="#3e3e54"></polygon>
+                                                <g>
+                                                    <polygon points="410.6 286.5 399.1 288 398.9 288.8 499.9 308.3 513.3 305.9 513.5 305 410.6 286.5" fill="#3e3e54"></polygon>
+                                                    <polygon points="395.7 283.7 395.9 282.8 248.2 255.7 239.2 257.3 239 258 384.3 286 395.7 283.7" fill="#3e3e54"></polygon>
+                                                </g>
+                                                <polygon points="371.3 273.9 256.9 252.7 266.4 250.3 382.4 271.5 371.3 273.9" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
+                                                <polygon points="237.6 264.9 221.4 261.7 230.4 259.4 246.8 262.6 237.6 264.9" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
+                                                <polygon points="474.8 312 250 267.3 259.4 265.1 487.7 309.6 474.8 312" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
+                                                <polygon points="412 308.5 204.4 266 213.1 263.8 423.9 306.3 412 308.5" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
+                                                <polygon points="450.2 316.4 428.8 312 440.9 309.7 462.8 314.1 450.2 316.4" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
+                                                <polygon points="201.7 273.1 187.7 270.2 196.2 268 210.4 271 201.7 273.1" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
+                                                <polygon points="222.8 277.6 208.3 274.5 217.1 272.4 231.8 275.4 222.8 277.6" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
+                                                <polygon points="363.1 307.3 231.7 279.5 240.9 277.3 374.2 305.1 363.1 307.3" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
+                                                <polygon points="444.6 287.5 385.4 276.5 396.8 274.1 456.9 285 444.6 287.5" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
+                                                <polygon points="526.3 302.7 460.3 290.4 473 288 540.1 300.2 526.3 302.7" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
+                                                <polygon points="426.4 320.7 376.3 310.1 387.6 307.9 438.5 318.5 426.4 320.7" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
+                                                <g>
+                                                    <polygon points="410.7 285.6 399.1 288 500.1 307.4 513.5 305 410.7 285.6" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
+                                                    <polygon points="395.9 282.8 248.4 255 239.2 257.3 384.5 285.2 395.9 282.8" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
+                                                </g>
+                                            </g>
+                                            <g id="paw-right">
+                                                <g id="paw-right--down">
+                                                    <path d="M293.2,191.3l10-7s-18.4,11.1-24,20-13,20.4-9,31c4.7,12.4,20.5,15.7,22,16,20,3.8,47.8-24.3,47.8-24.3s1.9-3.3,2.2-3.7" fill="#fff"></path>
+                                                    <path d="M342.1,223.4c.9,1.2.2,2.8-.3,3.7l-.4.7-.3.3a118.1,118.1,0,0,1-14.2,12.3,83.2,83.2,0,0,1-16.2,9.8,43.9,43.9,0,0,1-9.3,3,26.3,26.3,0,0,1-10.1.2,44.5,44.5,0,0,1-9.3-3.2,34.2,34.2,0,0,1-8.3-5.5,23,23,0,0,1-5.8-8.5,21.3,21.3,0,0,1-1.3-10.3,34.9,34.9,0,0,1,2.7-9.7,76.1,76.1,0,0,1,4.5-8.5l2.4-4,.6-1,.8-1.1a15.6,15.6,0,0,1,1.6-2,49.9,49.9,0,0,1,7-6.8,136.1,136.1,0,0,1,15.3-11.2,3.1,3.1,0,0,1,4.4,1,3,3,0,0,1-.8,4.2H305l-8.6,6.2c-.9.6-2.7-.5-3.1-1.9s.5-4.4,1.5-5l6.6-4.5,3.5,5.3A131.9,131.9,0,0,0,290,197.4a52.7,52.7,0,0,0-6.4,6,6.5,6.5,0,0,0-1.3,1.6l-.6.8-.7,1-2.4,3.8c-1.6,2.6-3.1,5.2-4.4,7.8a27.7,27.7,0,0,0-2.4,8.1,15.6,15.6,0,0,0,.8,8,17.4,17.4,0,0,0,4.4,6.7,27.2,27.2,0,0,0,7.1,4.9,39.5,39.5,0,0,0,8.1,3,21.6,21.6,0,0,0,8.4,0,37.8,37.8,0,0,0,8.5-2.6,84.9,84.9,0,0,0,15.7-9,142.4,142.4,0,0,0,14.1-11.6l-.3.3,1.1-1.8C340.3,223.4,341.3,222.2,342.1,223.4Z"></path>
+                                                </g>
+                                                <g id="paw-right--up">
+                                                    <g>
+                                                        <path d="M282.2,215.2c-1.6-1.6-12.8-17.9-14-34.3-.1-2.5,1.7-16,12.9-22.4s22.3-1.9,26.2.4c12.2,7.3,21.2,19.1,22.8,22.4" fill="#fff"></path>
+                                                        <path d="M330,181.2a2.4,2.4,0,0,1-2.6-1.3,71.4,71.4,0,0,0-9.8-10.8,64,64,0,0,0-11.7-8.6,26.3,26.3,0,0,0-6.5-2.3,26.9,26.9,0,0,0-6.9-.6,24.9,24.9,0,0,0-6.7,1.3,20.8,20.8,0,0,0-5.8,3.3,23.1,23.1,0,0,0-7.6,11,32.5,32.5,0,0,0-1.4,6.6,6.6,6.6,0,0,0,.1,1.4l.2,1.8c.1,1.2.4,2.3.6,3.5a65,65,0,0,0,4.8,13.4c1,2.2,2.2,4.3,3.4,6.4a43.1,43.1,0,0,0,3.9,5.9.6.6,0,0,1,0,.6c0,.2-.2.4-.4.7a5.7,5.7,0,0,1-1.5,1.6c-1.3.6-4.1.1-4.6-.6a89.5,89.5,0,0,1-7.2-13.7,63.7,63.7,0,0,1-4.3-14.9,25.7,25.7,0,0,1-.5-4c0-.3-.1-.6-.1-1v-1.2a12.5,12.5,0,0,1,.2-2.1,35.2,35.2,0,0,1,2.4-7.8,28.6,28.6,0,0,1,4.1-6.9,24.6,24.6,0,0,1,6.1-5.5,26.2,26.2,0,0,1,15.5-4.2,28.9,28.9,0,0,1,7.8,1.2l3.8,1.3,1.8.9,1.8,1a78.2,78.2,0,0,1,11.9,9.6,80.2,80.2,0,0,1,9.7,11.8C331.1,179.7,331.4,181,330,181.2Z"></path>
+                                                    </g>
+                                                    <use width="31.4" height="33.93" transform="translate(273.2 166.1) rotate(-5.6)" xlink:href="#paw-pads"></use>
+                                                </g>
+                                            </g>
+                                            <g id="laptop__terminal">
+                                                <path d="M316.9,238.7,153.5,205.2a5.1,5.1,0,0,1-4-3.5L109.8,75.4c-1-3.3,1.9-6.6,5.6-6.3L277.9,84.5a5.2,5.2,0,0,1,4.6,3.7l40.7,144.4C324.2,236.2,320.8,239.5,316.9,238.7Z"></path>
+                                                <path d="M317.3,238.7a7.9,7.9,0,0,0,2.2-.7,5,5,0,0,0,2.2-1.9,3.7,3.7,0,0,0,.6-2.9l-.3-.8-.2-.9a15.4,15.4,0,0,1-.5-1.7L300,154.6l-10.7-37.5L284,98.3l-2.6-9.4a7.9,7.9,0,0,0-.4-.9,4.3,4.3,0,0,0-.4-.7,3.3,3.3,0,0,0-1.5-1.1l-.9-.3h-1.1l-2.4-.2L119.2,71.2l-2.4-.3h-2.2a3.3,3.3,0,0,0-2.8,1.6,2.4,2.4,0,0,0-.5,1.4v.8c.1.1.1.2.1.4l.2.6,1.5,4.6L119,98.8l11.8,37.3,11.7,37.2,5.9,18.6,2.9,9.3a3.4,3.4,0,0,0,2.2,2h1l1.2.3,2.4.4,153,31.1c4.3.9,7.4,2.9,5.2,3.3s-11.7-.1-16-1l-75.8-15.7L186.6,214l-19-3.9-9.5-2-4.7-1h-.7l-.8-.3a6.1,6.1,0,0,1-1.4-.7,7.6,7.6,0,0,1-2.3-2.4l-.4-.8a1.9,1.9,0,0,1-.2-.7l-.4-1.2-.7-2.3-1.4-4.6-2.9-9.2-5.8-18.5-11.5-36.9-11.5-37-2.9-9.2L109,78.5l-.7-2.3v-.6c0-.3-.1-.6-.1-.8a4.8,4.8,0,0,1,0-1.7,6.8,6.8,0,0,1,3.8-5,10.1,10.1,0,0,1,3-.7h2.6l9.6,1L204.1,76l38.5,3.7,19.3,1.9,9.6.9,4.8.5h2.6a6.6,6.6,0,0,1,2.7,1.2,7.2,7.2,0,0,1,1.9,2.4,12.1,12.1,0,0,1,.5,1.4l.3,1.1,1.3,4.7,2.6,9.3,5.2,18.6,10.4,37.3,10.4,37.3,5.3,18.6,2.6,9.4,1.3,4.6.6,2.4a7,7,0,0,1,.4,2.7,5.7,5.7,0,0,1-1.8,3.7,5.9,5.9,0,0,1-3.4,1.6,3.5,3.5,0,0,1-2.1-.4C316.7,239,316.8,238.9,317.3,238.7Z"></path>
+                                            </g>
+                                            <g id="laptop__terminal_code_scene">
+                                                <g id="laptop__code">
+                                                    <g stroke="#3DE0E8" stroke-width="6" transform="matrix(-1 0 0 1 278 103)">
+                                                        <g id="f3" transform="translate(0 76)">
+                                                            <path class="typing-animation" id="f3-l9" d="M8,25L8,25" stroke-dasharray="60,10"></path>
+                                                            <path class="typing-animation" id="f3-l8" d="M8,13L8,13" stroke-dasharray="50,10"></path>
+                                                            <path class="typing-animation" id="f3-l7" d="M0,1L0,1" stroke-dasharray="25,10"></path>
+                                                        </g>
+                                                        <g id="f2" transform="translate(0 38)">
+                                                            <path class="typing-animation" id="f2-l6" d="M8,25L8,25" stroke-dasharray="40,10"></path>
+                                                            <path class="typing-animation" id="f2-l5" d="M8,13L8,13" stroke-dasharray="60,10"></path>
+                                                            <path class="typing-animation" id="f2-l4" d="M0,1L0,1" stroke-dasharray="30,10"></path>
+                                                        </g>
+                                                        <g id="f1">
+                                                            <path class="typing-animation" id="f1-l3" d="M8,25L8,25" stroke-dasharray="60,10"></path>
+                                                            <path class="typing-animation" id="f1-l2" d="M8,13L8,13" stroke-dasharray="60,10"></path>
+                                                            <path class="typing-animation" id="f1-l1" d="M0,1L0,1" stroke-dasharray="60,10"></path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                            <g id="laptop__cover" style="mix-blend-mode: hard-light;">
+                                                <polygon points="440.7 347.2 90.3 275.6 4.7 3.8 353 36.7 440.7 347.2" fill="#f2f2f2"></polygon>
+                                                <path d="M440.4,346.4c-2.5-5.3-6.5-18.8-9-27.4L390.7,178c-13.6-46.8-26.9-93.7-40.3-140.6l2.3,2L4.4,7.1,7.9,2.8,94,274.5l-2.9-2.6q83.7,16.8,166.8,34.2t166.8,35.4c8.8,1.9,17.5,5.1,14.7,5.5s-6.3-.2-12-.9-12.3-1.5-16.8-2.3Q330.5,328.1,250,312.1c-53.5-10.8-107.1-21.7-160.4-32.7l-2.3-.5-.6-2.1L1.5,4.8,0,0,5,.5,353.3,34l1.8.2.5,1.8q20.7,73.8,41.2,147.8l40.6,147.5C439.8,340.1,442.9,351.7,440.4,346.4Z"></path>
+                                            </g>
+                                        </g>
+                                        <g id="paw-left">
+                                            <g id="paw-left--up">
+                                                <g>
+                                                    <path d="M545.4,261.9c-7.1-13-12.9-31.1-13.3-37.6-.6-9,0-15.6,5.2-22.2s15-9.8,22.7-8.8a26.7,26.7,0,0,1,17.3,9.4c5.3,5.8,9.4,12.9,11.6,16.6" fill="#fff"></path>
+                                                    <path d="M588.9,219.2c-1.4.4-2.3-.7-2.8-1.4a93.9,93.9,0,0,0-8.9-12.5c-3.3-3.9-7.1-7-11.7-8.6a24.2,24.2,0,0,0-7.1-1.4,24.5,24.5,0,0,0-7.1.7,27,27,0,0,0-6.6,2.7,21,21,0,0,0-5.2,4.6,20.6,20.6,0,0,0-3.5,6.1,22.2,22.2,0,0,0-1.3,6.9,47.3,47.3,0,0,0,.1,7.5,52.2,52.2,0,0,0,1.4,7.1c1.4,4.8,3.1,9.7,5,14.4a147.7,147.7,0,0,0,6.5,13.9c.4.7-1,2.3-2.4,2.6s-4-.6-4.4-1.4c-2.3-4.8-4.3-9.7-6.1-14.6a128.8,128.8,0,0,1-4.6-15.3c-.3-1.3-.5-2.6-.7-4a16.4,16.4,0,0,1-.2-2.2v-2a57,57,0,0,1,.4-8.2,27.2,27.2,0,0,1,2.3-8.2c.7-1.3,1.4-2.5,2.2-3.7l1.3-1.7,1.4-1.6a28.8,28.8,0,0,1,7-5,27.6,27.6,0,0,1,8-2.5,25.6,25.6,0,0,1,8.3-.2,27.4,27.4,0,0,1,15.1,6.7,50.6,50.6,0,0,1,5.5,5.9,111.3,111.3,0,0,1,8.7,13.2C589.8,217.7,590.3,218.9,588.9,219.2Z"></path>
+                                                </g>
+                                                <use width="31.4" height="33.93" transform="matrix(0.99, -0.03, 0.04, 1, 539.85, 203.52)" xlink:href="#paw-pads"></use>
+                                            </g>
+                                            <g id="paw-left--down">
+                                                <path d="M538.2,239.3c-3.2,1.6-33,10.8-37,28-.4,1.8-2.1,18.9,7,26,5.5,4.3,12.7,2.8,25,0,10.3-2.3,19-5.8,40-16,9.1-4.4,16.6-8.2,22-11" fill="#fff"></path>
+                                                <path d="M595.1,266.4c.1,1.4-1.4,2.4-2.4,2.9l-18.3,9.4c-6.2,3.1-12.3,6.1-18.6,9a120.8,120.8,0,0,1-19.6,7.2l-5.1,1.2-5.1,1.1a43.4,43.4,0,0,1-5.2.9,33.8,33.8,0,0,1-5.6.3,17.8,17.8,0,0,1-5.8-1.5,6.1,6.1,0,0,1-1.4-.7l-1.3-.9-2.2-2a23.6,23.6,0,0,1-5.2-10.2,44.5,44.5,0,0,1-1.3-10.9c0-.9.1-1.8.1-2.7a6.6,6.6,0,0,0,.1-1.4v-.7c.1-.3.1-.7.2-.9a21.6,21.6,0,0,1,2.1-5.5,33.4,33.4,0,0,1,7.1-8.7,67.1,67.1,0,0,1,8.7-6.4,121.7,121.7,0,0,1,19-9,1.5,1.5,0,0,1,1.7.6,3.4,3.4,0,0,1,.9,1.9c.1,1.5-1.6,4.2-2.6,4.6a91.1,91.1,0,0,0-17.8,8.5,40.1,40.1,0,0,0-7.6,5.8,22.8,22.8,0,0,0-5.2,7.3l-.4,1-.3,1a1.7,1.7,0,0,0-.2.5v.4c-.1.4-.1.8-.2,1.2s-.1,3.1-.1,4.7a35.4,35.4,0,0,0,1.4,9.3,15.6,15.6,0,0,0,4.5,7.3c2,1.9,4.7,2.6,7.8,2.5a55.9,55.9,0,0,0,9.7-1.2l4.9-1.1,4.9-1.1a121,121,0,0,0,18.8-6.8c12.4-5.3,24.6-11.5,36.8-17.4C593.4,265.4,595,264.9,595.1,266.4Z"></path>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="comment-btn">
+                                <div id="cancel_reply" class="cancel-btn">取消回复</div>
+                                <input id="send_cm" class="send-btn" type="submit">
+                            </div>
+                            <input class="hide-input" id="reply_id" type="text" value="-1" readonly>
+                            <input class="hide-input" id="replier" type="text" value="" readonly>
+
+                        </div>
+                    </div>
+                    <span class="comment-num">共 2 评论</span>
+                    <div class="comment-list">
+                        <div class="comment-card">
+                            <div class="comment-img">
+                                <img src="img/avatar.jpg" alt="">
+                            </div>
+                            <div class="comment-cd">
+                                <div class="comment-header">
+                                    <span class="comment-name">Zeka</span>
+                                    <span>da</span>
+                                    <div reply-id="1" class="reply-btn">
+                                        回复
+                                    </div>
+                                </div>
+                                <div class="comment-meta">
+                                    <span>2020-04-02</span>
+
+                                </div>
+                                <div class="comment-ct">1</div>
+
+
+                                <div class="comment-reply">
+                                    <div class="comment-card">
+                                        <div class="comment-img">
+                                            <img src="img/avatar.png" alt="">
+                                        </div>
+                                        <div class="comment-cd">
+                                            <div class="comment-header">
+                                                <span class="comment-name">Zeka</span>
+                                                <span>da</span>
+                                                <div reply-id="2" class="reply-btn">
+                                                    回复
+                                                </div>
+                                            </div>
+                                            <div class="comment-meta">
+                                                <span>2020-04-02</span>
+                                            </div>
+                                            <div class="comment-ct">1</div>
+                                        </div>
+                                    </div>
+                                    <div class="comment-card">
+                                        <div class="comment-img">
+                                            <img src="img/avatar.png" alt="">
+                                        </div>
+                                        <div class="comment-cd">
+                                            <div class="comment-header">
+                                                <span class="comment-name">Zeka</span>
+                                                <span>da</span>
+                                                <div reply-id="1" class="reply-btn">
+                                                    回复
+                                                </div>
+                                            </div>
+                                            <div class="comment-meta">
+                                                <span>2020-04-02</span>
+                                            </div>
+                                            <div class="comment-ct">1</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="comment-card">
+                            <div class="comment-img">
+                                <img src="img/avatar.jpg" alt="">
+                            </div>
+                            <div class="comment-cd">
+                                <div class="comment-header">
+                                    <span class="comment-name">Zeka</span>
+                                    <span>da</span>
+                                </div>
+                                <div class="comment-meta">
+                                    <span>2020-04-02</span>
+
+                                </div>
+                                <div class="comment-ct">dsjksaKDFADKAKJDKJADALJDLASJDFS</div>
+
+
+                                <div class="comment-reply">
+                                    <div class="comment-card">
+                                        <div class="comment-img">
+                                            <img src="img/avatar.png" alt="">
+                                        </div>
+                                        <div class="comment-cd">
+                                            <div class="comment-header">
+                                                <span class="comment-name">Zeka</span>
+                                                <span>da</span>
+                                            </div>
+                                            <div class="comment-meta">
+                                                <span>2020-04-02</span>
+                                            </div>
+                                            <div class="comment-ct">1</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <footer id="footer" style="background-image: url(img/homepagebg2.jpg)">
+                <div id="foot">
+                    <p>©2019 - 2020 | Zeka</p>
+                    <p>由 Django 按时交付</p>
+                    <p>手写真是要累死了</p>
+                </div>
+            </footer>
+        </div>
+    </main>
+
+    <div class="bottom-tool-wrap">
+        <div id="bottom-tool">
+            <div id="bt-upward" class="tool-chunk"><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div>
+            <div id="bt-side-index" class="tool-chunk dis-pe"><i class="fa fa-list-ul close" id="mobile-toc-button" title="目录" aria-hidden="true"></i></div>
+            <div id="bt-goto-comment" class="tool-chunk"><i class="scroll_to_comment fa fa-comments"></i></div>
+        </div>
+    </div>
+
+    <div class="bottom-tips">
+<!--        <div class="tip-chunk">复制成功</div>-->
+    </div>
+
+    <script src="js/highlight.min.js"></script>
+    <script src="js/highlightjs-line-numbers.min.js"></script>
+    <script>
+        // code highlight, init as fast as possible
+        hljs.initHighlightingOnLoad();
+        hljs.initLineNumbersOnLoad();
+
+        // // show background effect
+        // document.addEventListener('touchmove', function (e) {
+        //     e.preventDefault()
+        // })
+        // var c = document.getElementById('bg-canvas'),
+        //     x = c.getContext('2d'),
+        //     pr = window.devicePixelRatio || 1,
+        //     w = window.innerWidth,
+        //     h = window.innerHeight,
+        //     f = 90,
+        //     q,
+        //     m = Math,
+        //     r = 0,
+        //     u = m.PI*2,
+        //     v = m.cos,
+        //     z = m.random
+        // c.width = w*pr
+        // c.height = h*pr
+        // x.scale(pr, pr)
+        // x.globalAlpha = 0.6
+        // function i(){
+        //     x.clearRect(0,0,w,h)
+        //     q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+        //     while(q[1].x<w+f) d(q[0], q[1])
+        // }
+        // function d(i,j){
+        //     x.beginPath()
+        //     x.moveTo(i.x, i.y)
+        //     x.lineTo(j.x, j.y)
+        //     var k = j.x + (z()*2-0.25)*f,
+        //         n = y(j.y)
+        //     x.lineTo(k, n)
+        //     x.closePath()
+        //     r-=u/-50
+        //     x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+        //     x.fill()
+        //     q[0] = q[1]
+        //     q[1] = {x:k,y:n}
+        // }
+        // function y(p){
+        //     var t = p + (z()*2-1.1)*f
+        //     return (t>h||t<0) ? y(p) : t
+        // }
+        // document.onclick = i
+        // document.ontouchstart = i
+        // i()
+    </script>
+<script>
+    /**
+     * Ribbons Class File.
+     * Creates low-poly ribbons background effect inside a target container.
+     */
+    (function( name, factory )
+    {
+        if( typeof window === "object" )
+        {
+            window[ name ] = factory();
+        }
+
+    })( "Ribbons", function()
+    {
+        var _w = window,
+            _b = document.body,
+            _d = document.documentElement;
+
+        // random helper
+        var random = function()
+        {
+            if( arguments.length === 1 ) // only 1 argument
+            {
+                if( Array.isArray( arguments[0] ) ) // extract index from array
+                {
+                    var index = Math.round( random( 0, arguments[0].length - 1 ) );
+                    return arguments[0][ index ];
+                }
+                return random( 0, arguments[0] ); // assume numeric
+            }
+            else if( arguments.length === 2 ) // two arguments range
+            {
+                return Math.random() * ( arguments[1] - arguments[0] ) + arguments[0];
+            }
+            return 0; // default
+        };
+
+        // screen helper
+        var screenInfo = function( e )
+        {
+            var width   = Math.max( 0, _w.innerWidth || _d.clientWidth || _b.clientWidth || 0 ),
+                height  = Math.max( 0, _w.innerHeight || _d.clientHeight || _b.clientHeight || 0 ),
+                scrollx = Math.max( 0, _w.pageXOffset || _d.scrollLeft || _b.scrollLeft || 0 ) - ( _d.clientLeft || 0 ),
+                scrolly = Math.max( 0, _w.pageYOffset || _d.scrollTop || _b.scrollTop || 0 ) - ( _d.clientTop || 0 );
+
+            return {
+                width   : width,
+                height  : height,
+                ratio   : width / height,
+                centerx : width / 2,
+                centery : height / 2,
+                scrollx : scrollx,
+                scrolly : scrolly,
+            };
+        };
+
+        // mouse/input helper
+        var mouseInfo = function( e )
+        {
+            var screen = screenInfo( e ),
+                mousex = e ? Math.max( 0, e.pageX || e.clientX || 0 ) : 0,
+                mousey = e ? Math.max( 0, e.pageY || e.clientY || 0 ) : 0;
+
+            return {
+                mousex  : mousex,
+                mousey  : mousey,
+                centerx : mousex - ( screen.width / 2 ),
+                centery : mousey - ( screen.height / 2 ),
+            };
+        };
+
+        // point object
+        var Point = function( x, y )
+        {
+            this.x = 0;
+            this.y = 0;
+            this.set( x, y );
+        };
+        Point.prototype = {
+            constructor: Point,
+
+            set: function( x, y )
+            {
+                this.x = ( x || 0 );
+                this.y = ( y || 0 );
+            },
+            copy: function( point )
+            {
+                this.x = ( point.x || 0 );
+                this.y = ( point.y || 0 );
+                return this;
+            },
+            multiply: function( x, y )
+            {
+                this.x *= ( x || 1 );
+                this.y *= ( y || 1 );
+                return this;
+            },
+            divide: function( x, y )
+            {
+                this.x /= ( x || 1 );
+                this.y /= ( y || 1 );
+                return this;
+            },
+            add: function( x, y )
+            {
+                this.x += ( x || 0 );
+                this.y += ( y || 0 );
+                return this;
+            },
+            subtract: function( x, y )
+            {
+                this.x -= ( x || 0 );
+                this.y -= ( y || 0 );
+                return this;
+            },
+            clampX: function( min, max )
+            {
+                this.x = Math.max( min, Math.min( this.x, max ) );
+                return this;
+            },
+            clampY: function( min, max )
+            {
+                this.y = Math.max( min, Math.min( this.y, max ) );
+                return this;
+            },
+            flipX: function()
+            {
+                this.x *= -1;
+                return this;
+            },
+            flipY: function()
+            {
+                this.y *= -1;
+                return this;
+            },
+        };
+
+        // class constructor
+        var Factory = function( options )
+        {
+            this._canvas  = null;
+            this._context = null;
+            this._sto     = null;
+            this._width   = 0;
+            this._height  = 0;
+            this._scroll  = 0;
+            this._ribbons = [];
+            this._options = {
+                // ribbon color HSL saturation amount
+                colorSaturation: "80%",
+                // ribbon color HSL brightness amount
+                colorBrightness: "60%",
+                // ribbon color opacity amount
+                colorAlpha: 0.65,
+                // how fast to cycle through colors in the HSL color space
+                colorCycleSpeed : 6,
+                // where to start from on the Y axis on each side (top|min, middle|center, bottom|max, random)
+                verticalPosition : "center",
+                // how fast to get to the other side of the screen
+                horizontalSpeed : 150,
+                // how many ribbons to keep on screen at any given time
+                ribbonCount: 3,
+                // add stroke along with ribbon fill colors
+                strokeSize: 0,
+                // move ribbons vertically by a factor on page scroll
+                parallaxAmount : -0.5,
+                // add animation effect to each ribbon section over time
+                animateSections : true,
+            };
+            this._onDraw   = this._onDraw.bind( this );
+            this._onResize = this._onResize.bind( this );
+            // 去除滚动事件，防止失效
+            // this._onScroll = this._onScroll.bind( this );
+            this.setOptions( options );
+            this.init();
+        };
+
+        // class prototype
+        Factory.prototype = {
+            constructor: Factory,
+
+            // Set and merge local options
+            setOptions: function( options )
+            {
+                if( typeof options === "object" )
+                {
+                    for( var key in options )
+                    {
+                        if( options.hasOwnProperty( key ) )
+                        {
+                            this._options[ key ] = options[ key ];
+                        }
+                    }
+                }
+            },
+
+            // Initialize the ribbons effect
+            init: function()
+            {
+                try
+                {
+                    this._canvas = document.createElement( "canvas" );
+                    this._canvas.style["display"] = "block";
+                    this._canvas.style["position"] = "fixed";
+                    this._canvas.style["margin"] = "0";
+                    this._canvas.style["padding"] = "0";
+                    this._canvas.style["border"] = "0";
+                    this._canvas.style["outline"] = "0";
+                    this._canvas.style["left"] = "0";
+                    this._canvas.style["top"] = "0";
+                    this._canvas.style["width"] = "100%";
+                    this._canvas.style["height"] = "100%";
+                    this._canvas.style["z-index"] = "0";
+                    this._onResize();
+
+                    this._context = this._canvas.getContext( "2d" );
+                    this._context.clearRect( 0, 0, this._width, this._height );
+                    this._context.globalAlpha = this._options.colorAlpha;
+
+                    window.addEventListener( "resize", this._onResize );
+                    window.addEventListener( "scroll", this._onScroll );
+                    document.body.appendChild( this._canvas );
+                }
+                catch( e ) {
+                    console.warn( "Canvas Context Error: " + e.toString() );
+                    return;
+                }
+                this._onDraw();
+            },
+
+            // Create a new random ribbon and to the list
+            addRibbon: function()
+            {
+                // movement data
+                var dir    = ( Math.round( random( 1, 9 ) ) > 5 ) ? "right" : "left",
+                    stop   = 1000,
+                    hide   = 200,
+                    min    = 0 - hide,
+                    max    = this._width + hide,
+                    movex  = 0,
+                    movey  = 0,
+                    startx = ( dir === "right" ) ? min : max,
+                    starty = Math.round( random( 0, this._height ) );
+
+                // asjust starty based on options
+                if( /^(top|min)$/i.test( this._options.verticalPosition ) )
+                {
+                    starty = 0 + hide;
+                }
+                else if( /^(middle|center)$/i.test( this._options.verticalPosition ) )
+                {
+                    starty = ( this._height / 2 );
+                }
+                else if( /^(bottom|max)$/i.test( this._options.verticalPosition ) )
+                {
+                    starty = this._height - hide;
+                }
+
+                // ribbon sections data
+                var ribbon = [],
+                    point1 = new Point( startx, starty ),
+                    point2 = new Point( startx, starty ),
+                    point3 = null,
+                    color  = Math.round( random( 0, 360 ) ),
+                    delay  = 0;
+
+                // buils ribbon sections
+                while( true )
+                {
+                    if( stop <= 0 ) break; stop--;
+
+                    movex = Math.round( ( Math.random() * 1 - 0.2 ) * this._options.horizontalSpeed );
+                    movey = Math.round( ( Math.random() * 1 - 0.5 ) * ( this._height * 0.25 ) );
+
+                    point3 = new Point();
+                    point3.copy( point2 );
+
+                    if( dir === "right" )
+                    {
+                        point3.add( movex, movey );
+                        if( point2.x >= max ) break;
+                    }
+                    else if( dir === "left" )
+                    {
+                        point3.subtract( movex, movey );
+                        if( point2.x <= min ) break;
+                    }
+                    // point3.clampY( 0, this._height );
+
+                    ribbon.push({ // single ribbon section
+                        point1 : new Point( point1.x, point1.y ),
+                        point2 : new Point( point2.x, point2.y ),
+                        point3 : point3,
+                        color  : color,
+                        delay  : delay,
+                        dir    : dir,
+                        alpha  : 0,
+                        phase  : 0,
+                    });
+
+                    point1.copy( point2 );
+                    point2.copy( point3 );
+
+                    delay += 4;
+                    color += this._options.colorCycleSpeed;
+                }
+                this._ribbons.push( ribbon );
+            },
+
+            // Draw single section
+            _drawRibbonSection: function( section )
+            {
+                if( section )
+                {
+                    if( section.phase >= 1 && section.alpha <= 0 )
+                    {
+                        return true; // done
+                    }
+                    if( section.delay <= 0 )
+                    {
+                        section.phase += 0.02;
+                        section.alpha = Math.sin( section.phase ) * 1;
+                        section.alpha = ( section.alpha <= 0 ) ? 0 : section.alpha;
+                        section.alpha = ( section.alpha >= 1 ) ? 1 : section.alpha;
+
+                        if( this._options.animateSections )
+                        {
+                            var mod = ( Math.sin( 1 + section.phase * Math.PI / 2 ) * 0.1 );
+
+                            if( section.dir === "right" )
+                            {
+                                section.point1.add( mod, 0 );
+                                section.point2.add( mod, 0 );
+                                section.point3.add( mod, 0 );
+                            } else {
+                                section.point1.subtract( mod, 0 );
+                                section.point2.subtract( mod, 0 );
+                                section.point3.subtract( mod, 0 );
+                            }
+                            section.point1.add( 0, mod );
+                            section.point2.add( 0, mod );
+                            section.point3.add( 0, mod );
+                        }
+                    }
+                    else { section.delay -= 0.5; }
+
+                    var s = this._options.colorSaturation,
+                        l = this._options.colorBrightness,
+                        c = "hsla("+ section.color +", "+ s +", "+ l +", "+ section.alpha +" )";
+
+                    this._context.save();
+
+                    if( this._options.parallaxAmount !== 0 )
+                    {
+                        this._context.translate( 0, this._scroll * this._options.parallaxAmount );
+                    }
+                    this._context.beginPath();
+                    this._context.moveTo( section.point1.x, section.point1.y );
+                    this._context.lineTo( section.point2.x, section.point2.y );
+                    this._context.lineTo( section.point3.x, section.point3.y );
+                    this._context.fillStyle = c;
+                    this._context.fill();
+
+                    if( this._options.strokeSize > 0 )
+                    {
+                        this._context.lineWidth = this._options.strokeSize;
+                        this._context.strokeStyle = c;
+                        this._context.lineCap = "round";
+                        this._context.stroke();
+                    }
+                    this._context.restore();
+                }
+                return false; // not done yet
+            },
+
+            // Draw ribbons
+            _onDraw: function()
+            {
+                // cleanup on ribbons list to rtemoved finished ribbons
+                for( var i = 0, t = this._ribbons.length; i < t; ++i )
+                {
+                    if( !this._ribbons[ i ] )
+                    {
+                        this._ribbons.splice( i, 1 );
+                    }
+                }
+
+                // draw new ribbons
+                this._context.clearRect( 0, 0, this._width, this._height );
+
+                for( var a = 0; a < this._ribbons.length; ++a ) // single ribbon
+                {
+                    var ribbon = this._ribbons[ a ],
+                        numSections = ribbon.length,
+                        numDone = 0;
+
+                    for( var b = 0; b < numSections; ++b ) // ribbon section
+                    {
+                        if( this._drawRibbonSection( ribbon[ b ] ) )
+                        {
+                            numDone++; // section done
+                        }
+                    }
+                    if( numDone >= numSections ) // ribbon done
+                    {
+                        this._ribbons[ a ] = null;
+                    }
+                }
+                // maintain optional number of ribbons on canvas
+                if( this._ribbons.length < this._options.ribbonCount )
+                {
+                    this.addRibbon();
+                }
+                requestAnimationFrame( this._onDraw );
+            },
+
+            // Update container size info
+            _onResize: function( e )
+            {
+                var screen   = screenInfo( e );
+                this._width  = screen.width;
+                this._height = screen.height;
+
+                if( this._canvas )
+                {
+                    this._canvas.width  = this._width;
+                    this._canvas.height = this._height;
+
+                    if( this._context )
+                    {
+                        this._context.globalAlpha = this._options.colorAlpha;
+                    }
+                }
+            },
+
+            // Update container size info
+            _onScroll: function( e )
+            {
+                var screen   = screenInfo( e );
+                this._scroll = screen.scrolly;
+            },
+
+        };
+
+        // export
+        return Factory;
+    });
+
+
+    new Ribbons({
+        colorSaturation: "60%",
+        colorBrightness: "50%",
+        colorAlpha: 0.5,
+        colorCycleSpeed : 5,
+        verticalPosition : "random",
+        horizontalSpeed : 200,
+        ribbonCount: 3,
+        strokeSize: 0,
+        parallaxAmount : -0.2,
+        animateSections : true,
+    });
+</script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+
+    <script src="js/toc.js"></script>
+    <script src="js/article-init.js"></script>
+    <script src="js/anime.min.js"></script>
+    <script src="js/fireworks.js"></script>
+</body>
+</html>

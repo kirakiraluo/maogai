@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+
+    <title>Title</title>
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/about.css">
+
+
+</head>
+<body>
+<canvas style="" id="bg-canvas"></canvas>
+
+<header id="homepage-head" style="background-image: url(img/homepage4.jpg)">
+    <h1 class="title-h1">关于我</h1>
+</header>
+
+<main id="main">
+    <nav class="top-nav">
+        <div id="top-logo">
+            <a href=""><h1>Zeka's Blog</h1></a>
+        </div>
+        <div id="bt-sidenav" class="side-top-toggle dis-pe">
+            <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+        </div>
+        <ul class="top-item-wrap dis-pc">
+            <li><a href=""><i class="fa fa-search fa-fw"></i>搜索</a></li>
+            <li><a href=""><i class="fa-fw fa fa-home"></i>首页</a></li>
+            <li><a href=""><i class="fa-fw fa fa-list" aria-hidden="true"></i>归档<i class="fa fa-chevron-down menus-expand" aria-hidden="true"></i></a>
+                <ul class="top-toggle-wrap">
+                    <li><a href=""><i class="fa fa-history" aria-hidden="true"></i>时间</a></li>
+                    <li><a href=""><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i>分类</a></li>
+                </ul>
+            </li>
+            <li><a href=""><i class="fa-fw fa fa-link"></i>友链</a></li>
+            <li><a href=""><i class="fa-fw fa fa-heart" aria-hidden="true"></i>关于</a></li>
+        </ul>
+    </nav>
+
+    <nav class="side-nav dis-pe">
+        <div class="sidenav-head-wrap">
+            <img src="img/avatar.png" alt="">
+        </div>
+        <div class="sidenav-post-wrap">
+            <div class="blog-side-info">
+                <a href="">
+                    <div>文章</div>
+                    <div>30</div>
+                </a>
+            </div>
+            <div class="blog-side-info">
+                <a href="">
+                    <div>分类</div>
+                    <div>30</div>
+                </a>
+            </div>
+        </div>
+        <hr>
+        <ul class="sidenav-list">
+            <li><a href=""><i class="fa-fw fa fa-home"></i>首页</a></li>
+            <li><a href=""><i class="fa fa-history" aria-hidden="true"></i>时间</a></li>
+            <li><a href=""><i class="fa fa-inbox article-meta__icon" aria-hidden="true"></i>分类</a></li>
+            <li><a href=""><i class="fa-fw fa fa-link"></i>友链</a></li>
+            <li><a href=""><i class="fa-fw fa fa-heart" aria-hidden="true"></i>关于</a></li>
+        </ul>
+
+    </nav>
+    <div id="post-wrap">
+
+        <div class="intro-img">
+            <img src="img/kemomimi2.jpg" alt="">
+        </div>
+        <div class="content">
+            <h2>这是什么</h2>
+            <p>这是一个缝合怪通过缝合至少三个平台的主题（hexo, wordpress, typecho）自己写（copy）的博客。</p>
+            <p>分享的东西不限，以技术为主。</p>
+            <h2>我能期待看到什么</h2>
+            <p>不需要任何期待，因为本人贼懒且三分钟热度，所以博客长时间处于废弃状态。</p>
+            <p>原则上，除非比较有价值（undefined）的东西，我否则不会轻易写博客。</p>
+            <p>但是如果能给你带来任何帮助，那我高兴能与你分享喜悦。</p>
+            <h2>好卡啊</h2>
+            <p>如果你感觉很卡，你得学会先从自己那开始找问题：</p>
+            <ul>
+                <li>我的内存条能不能加亿点？</li>
+                <li>我的cpu能不能升级？</li>
+                <li>我的显卡能不能升级？</li>
+            </ul>
+            <p>...</p>
+            <p>好吧不开玩笑了，因为博客本身动态较多，而且没有进行系统优化，所以可能比较卡。</p>
+            <p>如果你相信我，请期待我在下一个版本做的更好吧！</p>
+        </div>
+    </div>
+    <div class="side-container">
+        <div id="side-wrap">
+            <div id="side-intro-wrap" class="side-chunk">
+                <div id="side-intro-head">
+                    <img id="side-intro-img" src="img/avatar.png" alt="">
+                    <h2>Zeka</h2>
+                    <p>咸鱼突刺！</p>
+                </div>
+                <div id="blog-info-wrap">
+                    <div class="blog-info">
+                        <a href="">
+                            <div>文章</div>
+                            <div>30</div>
+                        </a>
+                    </div>
+                    <div class="blog-info">
+                        <a href="">
+                            <div>分类</div>
+                            <div>30</div>
+                        </a>
+                    </div>
+                </div>
+                <ul id="social-info-wrap">
+                    <li><a href=""><i class="fab fa-github" aria-hidden="true"></i></a></li>
+                    <li><a href=""><i class="fab fa-qq" aria-hidden="true"></i></a></li>
+                    <li><a href=""><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href=""><i class="fab fa-steam" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="side-chunk">
+                <h3 class="side-title">分类</h3>
+                <ul class="dis-ul" id="side-category-wrap">
+                    <li><a href=""><span>Hexo</span> <span>10</span></a></li>
+                    <li><a href=""><span>插件</span> <span>10</span></a></li>
+                    <li><a href=""><span>JavaScript</span> <span>10</span></a></li>
+                </ul>
+            </div>
+
+            <div class="side-chunk">
+                <h3 class="side-title">图站</h3>
+
+            </div>
+
+            <div class="side-chunk">
+                <h3 class="side-title">网站资讯</h3>
+                <ul class="dis-ul" id="side-webinfo-wrap">
+                    <li><a href=""><span>文章总数：</span><span>10</span></a></li>
+                    <li><a href=""><span>已运行时间：</span><span>10</span></a></li>
+                    <li><a href=""><span>访问量：</span><span>10</span></a></li>
+                </ul>
+
+            </div>
+
+            <div class="side-chunk">
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="bottom-tool-wrap">
+    <div id="bottom-tool">
+        <div id="bt-upward" class="tool-chunk"><i class="fa fa-arrow-up" id="go-up" title="回到顶部" aria-hidden="true"></i></div>
+    </div>
+</div>
+
+<footer id="footer" style="background-image: url(img/homepagebg2.jpg)">
+    <div id="foot">
+        <p>©2019 - 2020 | Zeka</p>
+        <p>由 Django 按时交付</p>
+        <p>手写真是要累死了</p>
+    </div>
+</footer>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script>
+    document.addEventListener('touchmove', function (e) {
+        e.preventDefault()
+    })
+    var c = document.getElementById('bg-canvas'),
+        x = c.getContext('2d'),
+        pr = window.devicePixelRatio || 1,
+        w = window.innerWidth,
+        h = window.innerHeight,
+        f = 90,
+        q,
+        m = Math,
+        r = 0,
+        u = m.PI*2,
+        v = m.cos,
+        z = m.random
+    c.width = w*pr
+    c.height = h*pr
+    x.scale(pr, pr)
+    x.globalAlpha = 0.6
+    function i(){
+        x.clearRect(0,0,w,h)
+        q=[{x:0,y:h*.7+f},{x:0,y:h*.7-f}]
+        while(q[1].x<w+f) d(q[0], q[1])
+    }
+    function d(i,j){
+        x.beginPath()
+        x.moveTo(i.x, i.y)
+        x.lineTo(j.x, j.y)
+        var k = j.x + (z()*2-0.25)*f,
+            n = y(j.y)
+        x.lineTo(k, n)
+        x.closePath()
+        r-=u/-50
+        x.fillStyle = '#'+(v(r)*127+128<<16 | v(r+u/3)*127+128<<8 | v(r+u/3*2)*127+128).toString(16)
+        x.fill()
+        q[0] = q[1]
+        q[1] = {x:k,y:n}
+    }
+    function y(p){
+        var t = p + (z()*2-1.1)*f
+        return (t>h||t<0) ? y(p) : t
+    }
+    document.onclick = i
+    document.ontouchstart = i
+    i()
+</script>
+<script src="js/homepage-init.js"></script>
+</body>
+</html>
